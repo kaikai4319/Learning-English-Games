@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单词匹配游戏</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 游戏主界面 -->
+        <div id="gameContainer" class="hidden">
+            <div class="game-header">
+                <div class="score">得分: <span id="score">0</span></div>
+                <button id="toggleFavoriteBtn">显示收藏</button>
+                <button id="pauseBtn">暂停</button>
+            </div>
+            <div class="game-area">
+                <div class="game-content">
+                    <div id="wordsArea" class="words-area"></div>
+                    <div id="definitionsArea" class="definitions-area"></div>
+                </div>
+            </div>
+            <!-- 收藏列表 -->
+            <div id="favoriteList" class="favorite-list hidden">
+                <h3>收藏的单词</h3>
+                <div class="favorite-content"></div>
+            </div>
+        </div>
+
+        <!-- 单词表管理界面 -->
+        <div id="wordListManager">
+            <h2>单词表管理</h2>
+            <div class="word-input-area">
+                <input type="text" id="wordInput" placeholder="单词">
+                <input type="text" id="definitionInput" placeholder="释义">
+                <button id="addWordBtn">添加单词</button>
+            </div>
+            <div class="word-list-controls">
+                <button id="saveListBtn">保存单词表</button>
+                <button id="loadListBtn">加载单词表</button>
+                <button id="importListBtn">导入单词表</button>
+                <input type="file" id="fileInput" accept=".txt,.csv" style="display: none;">
+                <button id="startGameBtn">开始游戏</button>
+            </div>
+            <table id="wordList">
+                <thead>
+                    <tr>
+                        <th>单词</th>
+                        <th>释义</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <!-- 先加载数据库脚本 -->
+    <script src="db.js"></script>
+    <!-- 然后加载 wordList.js -->
+    <script src="wordList.js"></script>
+    <!-- 最后加载 game.js -->
+    <script src="game.js"></script>
+</body>
+</html> 

@@ -1,0 +1,346 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* 单词表管理样式 */
+.word-input-area {
+    margin-bottom: 20px;
+}
+
+.word-input-area input {
+    padding: 8px;
+    margin-right: 10px;
+}
+
+.word-list-controls {
+    margin-bottom: 20px;
+}
+
+#wordList {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#wordList th, #wordList td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+/* 游戏区域样式 */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.score {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2196F3;
+}
+
+#pauseBtn {
+    padding: 8px 20px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#pauseBtn:hover {
+    background-color: #1976D2;
+}
+
+.game-area {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.game-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.words-area, .definitions-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    flex: 1;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    position: relative;
+    height: 600px;  /* 增加高度以使布局更加均匀 */
+}
+
+.words-area {
+    border-right: 2px dashed #e0e0e0;
+}
+
+.definitions-area {
+    min-height: 400px;
+}
+
+.word-card, .definition-card {
+    opacity: 1;
+    transition: all 0.3s ease;
+    padding: 15px 20px;
+    width: 80%;  /* 增加宽度使模块更大 */
+    min-width: 150px;
+    height: 60px;  /* 固定高度 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.1em;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 修改位置间距，使分布更均匀 */
+.position-1 { top: 40px !important; }
+.position-2 { top: 150px !important; }
+.position-3 { top: 260px !important; }
+.position-4 { top: 370px !important; }
+.position-5 { top: 480px !important; }
+
+.word-card {
+    background-color: #E3F2FD;
+    border-color: #90CAF9;
+    color: #1565C0;
+}
+
+.definition-card {
+    background-color: #F3E5F5;
+    border-color: #CE93D8;
+    color: #7B1FA2;
+}
+
+.word-card:hover, .definition-card:hover {
+    transform: translateX(-50%) scale(1.02);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.word-card.selected, .definition-card.selected {
+    transform: translateX(-50%) scale(1.02);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.word-card.selected {
+    background-color: #90CAF9;
+    color: white;
+}
+
+.definition-card.selected {
+    background-color: #CE93D8;
+    color: white;
+}
+
+.word-card.success, .definition-card.success {
+    background-color: #A5D6A7;
+    border-color: #81C784;
+    color: #2E7D32;
+    animation: successPulse 0.5s ease;
+}
+
+.word-card.error, .definition-card.error {
+    background-color: #EF9A9A;
+    border-color: #E57373;
+    color: #C62828;
+    animation: errorShake 0.5s ease;
+}
+
+@keyframes successPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes errorShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* 淡出动画时保持位置 */
+.word-card.fading, .definition-card.fading {
+    pointer-events: none;
+    transform: translateX(-50%);
+}
+
+/* 收藏按钮样式 */
+#toggleFavoriteBtn {
+    padding: 8px 20px;
+    background-color: #FF9800;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#toggleFavoriteBtn:hover {
+    background-color: #F57C00;
+}
+
+/* 收藏列表样式 */
+.favorite-list {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    max-height: 400px;
+    overflow: auto;
+}
+
+.favorite-list h3 {
+    margin: 0 0 15px 0;
+    color: #333;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    padding: 10px 0;
+    z-index: 1;
+}
+
+.favorite-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    max-height: calc(100% - 50px);
+    overflow-y: auto;
+}
+
+.favorite-item {
+    padding: 10px;
+    background-color: #FFF3E0;
+    border: 1px solid #FFE0B2;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 80px;
+}
+
+.favorite-item .word-info {
+    flex-grow: 1;
+}
+
+.favorite-item .word {
+    font-weight: bold;
+    color: #E65100;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.favorite-item .meaning {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.favorite-item .remove-btn {
+    padding: 4px 8px;
+    background-color: #FF5722;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+.favorite-item .remove-btn:hover {
+    background-color: #F4511E;
+}
+
+/* 收藏按钮样式 */
+.favorite-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 24px;
+    height: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #FFB74D;
+    font-size: 18px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorite-btn.active {
+    color: #FF9800;
+}
+
+.speak-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #2196F3;
+    font-size: 16px;
+    padding: 4px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.speak-btn:hover {
+    background-color: #E3F2FD;
+    transform: scale(1.1);
+}
+
+.speak-btn:active {
+    transform: scale(0.95);
+}
+
+/* 美化滚动条 */
+.favorite-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.favorite-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.favorite-list::-webkit-scrollbar-thumb {
+    background: #FFB74D;
+    border-radius: 4px;
+}
+
+.favorite-list::-webkit-scrollbar-thumb:hover {
+    background: #FF9800;
+} 

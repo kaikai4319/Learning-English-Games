@@ -1,0 +1,14 @@
+# IDE files
+.vscode/
+.idea/
+*.iml
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Node modules (如果有的话)
+node_modules/ 
